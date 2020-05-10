@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tранслитератор</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans:400,700" rel="stylesheet">
+</head>
+<body>
+	<div class="head">
+		<img src="./im.jpg"/>
+		<div class="head-title">Tранслитератор курдского языка</div>
+	</div>
+	<div class="container">
+		<div class="head-cont">
+			<a class="header" href="./index2.html">Латиница - Кирилица</a>
+		</div>
+		<div><textarea class="enter" placeholder="Введите текст на латинице" id="enter"></textarea></div> 
+		<div><input class="btn" type="button" value="ПЕРЕВЕСТИ" onclick="perevesti();" /></div>
+		<div><textarea class="autput" id="autput"></textarea></div>
+	</div>
+
+	<script type="text/javascript">
+		var MAP = {
+				'a'	:   'а',
+				'b'	:   'б',
+				'c'	:	'щ',
+				'ç'	:	'ч',
+				'd'	:	'д',
+				'e'	:	'ә',
+				'ê'	:	'е',
+				'f'	:	'ф',
+				'g'	:	'г',
+				'i'	:	'ь',
+				'î'	:	'и',
+				'j'	:	'ж',
+				'k'	:	'к',
+				'l'	:	'л',
+				'm'	:	'м',
+				'n'	:	'н',
+				'o'	:	'о',
+				'p'	:	'п',
+				'r'	:	'р',
+				's'	:	'с',
+				'ş'	:	'ш',
+				't'	:	'т',
+				'u'	:	'ӧ',
+				'û'	:	'у',
+				'v'	:	'в',
+				'y'	:	'й',
+				'z'	:	'з'	
+		};
+
+		var I = document.getElementById('enter');
+		var O = document.getElementById('autput');
+		function perevesti() {
+			var S = '';
+			for (var i = 0; i < I.value.length; i++) {
+				var CHAR = I.value.charAt(i);
+				var LOWER = CHAR.toLowerCase();
+				if (CHAR == CHAR.toUpperCase())
+					UPPER = 1;
+				else
+					UPPER = 0;
+					S += LOWER in MAP ? MAP[CHAR.toLowerCase()][UPPER ? 'toUpperCase' : 'toString']() : CHAR;
+			}
+			O.value = S;
+		}
+
+	</script>
+
+</body>
+</html>
